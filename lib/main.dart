@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_dev2/quiz_servery.dart';
 import 'package:quiz_dev2/socialButton.dart';
 import 'socialButton.dart';
 
@@ -18,7 +19,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: QuizScree(),
     );
   }
