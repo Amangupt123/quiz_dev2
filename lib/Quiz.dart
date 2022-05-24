@@ -2,6 +2,7 @@
 
 import 'dart:developer';
 
+import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 //import 'package:flutter/src/widgets/framework.dart';
@@ -16,6 +17,9 @@ class QuizScree extends StatefulWidget {
 }
 
 class _QuizScreeState extends State<QuizScree> {
+  final int _duration = 10;
+  final CountDownController _controller = CountDownController();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -45,11 +49,78 @@ class _QuizScreeState extends State<QuizScree> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  SizedBox(
+                    width: 140,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 12.0),
+                    child: CircularCountDownTimer(
+                      // Countdown duration in Seconds.
+                      duration: _duration,
+
+                      // Countdown initial elapsed Duration in Seconds.
+                      initialDuration: 10,
+
+                      // Controls (i.e Start, Pause, Resume, Restart) the Countdown Timer.
+                      controller: _controller,
+
+                      // Width of the Countdown Widget.
+                      width: MediaQuery.of(context).size.width / 6.5,
+
+                      // Height of the Countdown Widget.
+                      height: MediaQuery.of(context).size.height / 10,
+
+                      // Ring Color for Countdown Widget.
+                      ringColor: Colors.grey[300]!,
+
+                      // Ring Gradient for Countdown Widget.
+                      ringGradient: null,
+
+                      // Filling Color for Countdown Widget.
+                      fillColor: Colors.green,
+
+                      // Filling Gradient for Countdown Widget.
+                      fillGradient: null,
+
+                      // Background Color for Countdown Widget.
+                      backgroundColor: Colors.white,
+
+                      // Background Gradient for Countdown Widget.
+                      backgroundGradient: null,
+
+                      // Border Thickness of the Countdown Ring.
+                      strokeWidth: 5.0,
+
+                      // Begin and end contours with a flat edge and no extension.
+                      strokeCap: StrokeCap.round,
+
+                      // Text Style for Countdown Text.
+                      textStyle: const TextStyle(
+                        fontSize: 38.0,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+
+                      // Format for the Countdown Text.
+                      textFormat: CountdownTextFormat.S,
+
+                      // Handles Countdown Timer (true for Reverse Countdown (max to 0), false for Forward Countdown (0 to max)).
+                      isReverse: true,
+
+                      // Handles Animation Direction (true for Reverse Animation, false for Forward Animation).
+                      isReverseAnimation: false,
+
+                      // Handles visibility of the Countdown Text.
+                      isTimerTextShown: true,
+                      // onStart: () => _controller.start(),
+                    ),
+                  ),
                   Container(
-                    height: 50,
-                    width: 100,
+                    height: 40,
+                    width: 80,
                     decoration: BoxDecoration(
                       color: Colors.blue,
                       borderRadius: BorderRadius.circular(10),
@@ -58,8 +129,8 @@ class _QuizScreeState extends State<QuizScree> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         SizedBox(
-                          height: 35,
-                          width: 35,
+                          height: 30,
+                          width: 30,
                           child: Image.asset(
                             "assets/vector3x.png",
                             fit: BoxFit.contain,
@@ -116,17 +187,18 @@ class _QuizScreeState extends State<QuizScree> {
                     fontSize: 20),
               ),
               SizedBox(
-                height: 10,
+                height: 20,
               ),
               Container(
                 height: 157,
-                width: 300,
+                width: 400,
                 decoration:
                     BoxDecoration(borderRadius: BorderRadius.circular(20)),
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
-                  child:
-                      Image.asset('assets/tajmahal3x.png', fit: BoxFit.cover),
+                  padding: const EdgeInsets.only(right: 35.0),
+                  child: Image.asset(
+                    'assets/tajmahal3x.png',
+                  ),
                 ),
               )
             ],
