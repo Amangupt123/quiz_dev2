@@ -167,12 +167,131 @@ class _QuizScreeState extends State<QuizScree> {
                 SizedBox(
                   height: 10,
                 ),
-                Text(
-                  "4.  Where is the Taj Mahal located?",
-                  style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      color: Color(0xff505050),
-                      fontSize: 20),
+                InkWell(
+                  onTap: () {
+                    showModalBottomSheet<void>(
+                      backgroundColor: Colors.transparent,
+                      context: context,
+                      isScrollControlled: true,
+                      shape: RoundedRectangleBorder(
+                          // borderRadius: BorderRadius.vertical(
+                          //   top: Radius.circular(30.0),
+                          // ),
+                          ),
+                      builder: (BuildContext context) {
+                        return Container(
+                            decoration: const BoxDecoration(
+                              color: Colors.white,
+                              boxShadow: [
+                                // BoxShadow(
+                                //     color: Color(0xffC9A676), spreadRadius: 1)
+                              ],
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(30.0),
+                                  topRight: Radius.circular(30.0)),
+                            ),
+                            height: 530,
+                            //color: Colors.white,
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 8.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.min,
+                                children: <Widget>[
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 12.0),
+                                    child: CircularCountDownTimer(
+                                      duration: _duration,
+
+                                      initialDuration: 10,
+
+                                      controller: _controller,
+
+                                      width: MediaQuery.of(context).size.width /
+                                          6.5,
+
+                                      height:
+                                          MediaQuery.of(context).size.height /
+                                              10,
+
+                                      ringColor: Colors.grey[300]!,
+
+                                      ringGradient: null,
+
+                                      fillColor: Color(0xffFFBF47),
+
+                                      fillGradient: null,
+
+                                      backgroundColor: Colors.white,
+
+                                      backgroundGradient: null,
+
+                                      strokeWidth: 5.0,
+
+                                      strokeCap: StrokeCap.round,
+
+                                      textStyle: const TextStyle(
+                                        fontSize: 38.0,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+
+                                      textFormat: CountdownTextFormat.S,
+
+                                      isReverse: true,
+
+                                      isReverseAnimation: false,
+
+                                      isTimerTextShown: true,
+                                      // onStart: () => _controller.start(),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        "Your",
+                                        style: TextStyle(fontSize: 20),
+                                      ),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      Text(
+                                        "Answer B",
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      Text(
+                                        "is Correct",
+                                        style: TextStyle(fontSize: 20),
+                                      )
+                                    ],
+                                  )
+                                  // const Text('Modal BottomSheet'),
+                                  // ElevatedButton(
+                                  //   child: const Text('Close BottomSheet'),
+                                  //   onPressed: () => Navigator.pop(context),
+                                  // )
+                                ],
+                              ),
+                            ));
+                      },
+                    );
+                  },
+                  child: Text(
+                    "4.  Where is the Taj Mahal located?",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        color: Color(0xff505050),
+                        fontSize: 20),
+                  ),
                 ),
                 SizedBox(
                   height: 20,
@@ -255,6 +374,12 @@ class _QuizScreeState extends State<QuizScree> {
                   selectedColor: Colors.red,
                   id: 1,
                   selected: buttonList[2],
+                  // IconButton(
+                  //   icon: Image.asset('assets/images/back.png'),
+                  //   onPressed: () {
+                  //     // Get.to(() => ChangePassword());
+                  //   },
+                  // )
                   //title: "London,United Kingdom",
                 ),
                 SizedBox(

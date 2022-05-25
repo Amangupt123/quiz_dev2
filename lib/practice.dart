@@ -40,51 +40,75 @@ class _practiceState extends State<practice> {
             right: 16,
           ),
           child: ListView.builder(
+            // reverse: true,
             itemCount: 10,
-            itemBuilder: (
-              context,
-              index,
-            ) {
+            itemBuilder: (context, index) {
               return Container(
-                margin: EdgeInsets.only(bottom: 15),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(0),
-                    color: Colors.red,
-                    border: Border(
-                      left: BorderSide(color: Color(0xffFC942D), width: 6),
-                      right: BorderSide(width: 1, color: Colors.grey),
-                      top: BorderSide(width: 1, color: Colors.grey),
-                      bottom: BorderSide(width: 1, color: Colors.grey),
-                    )),
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 8.0),
-                  child: ListTile(
-                      // radius: 28,
-                      //Color:Colors.black,
-                      // leading: Icon(Icons.message),.
-
-                      title: Row(
+                  margin: EdgeInsets.only(bottom: 10),
+                  child: Card(
+                    elevation: 2,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8)),
+                    //Wrap with IntrinsicHeight
+                    child: IntrinsicHeight(
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //   crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text(
-                            'Test ${index + 1}',
-                            style: const TextStyle(
-                                color: const Color(
-                                  0xff111128,
-                                ),
-                                fontWeight: FontWeight.w700),
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: <Widget>[
+                          Container(
+                            height: 70,
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(8),
+                                  bottomLeft: Radius.circular(8)),
+                              color: Colors.orangeAccent,
+                            ),
+                            width: 8,
                           ),
-                          Image.asset(
-                            "assets/play.png",
-                            height: 33,
-                            width: 33,
-                          )
+                          Expanded(
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 8.0, right: 8),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Text ${index + 1}",
+                                        style: const TextStyle(
+                                            fontSize: 17,
+                                            color: const Color(
+                                              0xff111128,
+                                            ),
+                                            fontWeight: FontWeight.w900),
+                                      ),
+                                      Text(
+                                        "Date ${17 - index} Apr 2022",
+                                        style: const TextStyle(
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 15),
+                                      ),
+                                    ],
+                                  ),
+                                  Image.asset(
+                                    "assets/play.png",
+                                    height: 33,
+                                    width: 33,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
                         ],
                       ),
-                      subtitle: Text("Date ${index + 17} Apr 2022")),
-                ),
-              );
+                    ),
+                  ));
             },
           ),
         ),
