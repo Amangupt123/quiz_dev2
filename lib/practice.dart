@@ -38,11 +38,34 @@ class _practiceState extends State<practice> {
           itemBuilder: (context, index) {
             return Container(
               margin: EdgeInsets.all(8),
-              child: Card(
+              child: Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.white),
                 child: ListTile(
-                  leading: Icon(Icons.message),
-                  title: Text('item ${index}'),
-                ),
+                    //Color:Colors.black,
+                    // leading: Icon(Icons.message),.
+
+                    title: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      //   crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          'Test ${index + 1}',
+                          style: TextStyle(
+                              color: Color(
+                                0xff111128,
+                              ),
+                              fontWeight: FontWeight.w700),
+                        ),
+                        Image.asset(
+                          "assets/play.png",
+                          height: 33,
+                          width: 33,
+                        )
+                      ],
+                    ),
+                    subtitle: Text("Date ${index + 17} Apr 2022")),
               ),
             );
           },

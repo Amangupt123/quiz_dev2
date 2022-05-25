@@ -22,7 +22,7 @@ class _quiz_serveyState extends State<quiz_servey> {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          //  title: Text("Live Quiz"),
+          //  title: Text("Live Quiz") ,
           toolbarHeight: 100,
           backgroundColor: Color(
             0xffF8922D,
