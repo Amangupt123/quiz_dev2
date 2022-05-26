@@ -12,6 +12,20 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:quiz_dev2/quiz_servery.dart';
 import 'package:quiz_dev2/socialButton.dart';
 
+import 'package:charts_flutter/flutter.dart' as charts;
+
+class BarChartModel {
+  String year;
+  int financial;
+  final charts.Color color;
+
+  BarChartModel({
+    required this.year,
+    required this.financial,
+    required this.color,
+  });
+}
+
 class QuizScree extends StatefulWidget {
   const QuizScree({Key? key}) : super(key: key);
 
@@ -20,6 +34,34 @@ class QuizScree extends StatefulWidget {
 }
 
 class _QuizScreeState extends State<QuizScree> {
+  final List<BarChartModel> data = [
+    BarChartModel(
+      year: "A",
+      financial: 15,
+      color: charts.ColorUtil.fromDartColor(Colors.red),
+    ),
+    BarChartModel(
+      year: "B",
+      financial: 100,
+      color: charts.ColorUtil.fromDartColor(Colors.green),
+    ),
+    BarChartModel(
+      year: "C",
+      financial: 8,
+      color: charts.ColorUtil.fromDartColor(Colors.red),
+    ),
+    BarChartModel(
+      year: "D",
+      financial: 22,
+      color: charts.ColorUtil.fromDartColor(Colors.red),
+    ),
+    // BarChartModel(
+    //   year: ".",
+    //   financial: 200,
+    //   color: charts.ColorUtil.fromDartColor(Colors.white),
+    // ),
+  ];
+
   final int _duration = 10;
   final CountDownController _controller = CountDownController();
   int selectedID = 0;
@@ -27,6 +69,15 @@ class _QuizScreeState extends State<QuizScree> {
 
   @override
   Widget build(BuildContext context) {
+    List<charts.Series<BarChartModel, String>> series = [
+      charts.Series(
+        id: "financial",
+        data: data,
+        domainFn: (BarChartModel series, _) => series.year,
+        measureFn: (BarChartModel series, _) => series.financial,
+        colorFn: (BarChartModel series, _) => series.color,
+      ),
+    ];
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -180,108 +231,121 @@ class _QuizScreeState extends State<QuizScree> {
                           ),
                       builder: (BuildContext context) {
                         return Container(
-                            decoration: const BoxDecoration(
-                              color: Colors.white,
-                              boxShadow: [
-                                // BoxShadow(
-                                //     color: Color(0xffC9A676), spreadRadius: 1)
-                              ],
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(30.0),
-                                  topRight: Radius.circular(30.0)),
-                            ),
-                            height: 530,
-                            //color: Colors.white,
-                            child: Padding(
-                              padding: const EdgeInsets.only(top: 8.0),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                mainAxisSize: MainAxisSize.min,
-                                children: <Widget>[
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 12.0),
-                                    child: CircularCountDownTimer(
-                                      duration: _duration,
+                          decoration: const BoxDecoration(
+                            color: Colors.white,
+                            boxShadow: [
+                              // BoxShadow(
+                              //     color: Color(0xffC9A676), spreadRadius: 1)
+                            ],
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(30.0),
+                                topRight: Radius.circular(30.0)),
+                          ),
+                          height: 530,
+                          //color: Colors.white,
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 8.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.min,
+                              children: <Widget>[
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 12.0),
+                                  child: CircularCountDownTimer(
+                                    duration: _duration,
 
-                                      initialDuration: 10,
+                                    initialDuration: 10,
 
-                                      controller: _controller,
+                                    controller: _controller,
 
-                                      width: MediaQuery.of(context).size.width /
-                                          6.5,
+                                    width:
+                                        MediaQuery.of(context).size.width / 6.5,
 
-                                      height:
-                                          MediaQuery.of(context).size.height /
-                                              10,
+                                    height:
+                                        MediaQuery.of(context).size.height / 10,
 
-                                      ringColor: Colors.grey[300]!,
+                                    ringColor: Colors.grey[300]!,
 
-                                      ringGradient: null,
+                                    ringGradient: null,
 
-                                      fillColor: Color(0xffFFBF47),
+                                    fillColor: Color(0xffFFBF47),
 
-                                      fillGradient: null,
+                                    fillGradient: null,
 
-                                      backgroundColor: Colors.white,
+                                    backgroundColor: Colors.white,
 
-                                      backgroundGradient: null,
+                                    backgroundGradient: null,
 
-                                      strokeWidth: 5.0,
+                                    strokeWidth: 5.0,
 
-                                      strokeCap: StrokeCap.round,
+                                    strokeCap: StrokeCap.round,
 
-                                      textStyle: const TextStyle(
-                                        fontSize: 38.0,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-
-                                      textFormat: CountdownTextFormat.S,
-
-                                      isReverse: true,
-
-                                      isReverseAnimation: false,
-
-                                      isTimerTextShown: true,
-                                      // onStart: () => _controller.start(),
+                                    textStyle: const TextStyle(
+                                      fontSize: 38.0,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
                                     ),
+
+                                    textFormat: CountdownTextFormat.S,
+
+                                    isReverse: true,
+
+                                    isReverseAnimation: false,
+
+                                    isTimerTextShown: true,
+                                    // onStart: () => _controller.start(),
                                   ),
-                                  SizedBox(
-                                    height: 10,
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "Your",
+                                      style: TextStyle(fontSize: 20),
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text(
+                                      "Answer B",
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text(
+                                      "is Correct",
+                                      style: TextStyle(fontSize: 20),
+                                    )
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 80,
+                                ),
+
+                                SizedBox(
+                                  height: 300,
+                                  width: 300,
+                                  child: charts.BarChart(
+                                    series,
+                                    animate: true,
                                   ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        "Your",
-                                        style: TextStyle(fontSize: 20),
-                                      ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      Text(
-                                        "Answer B",
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      Text(
-                                        "is Correct",
-                                        style: TextStyle(fontSize: 20),
-                                      )
-                                    ],
-                                  )
-                                  // const Text('Modal BottomSheet'),
-                                  // ElevatedButton(
-                                  //   child: const Text('Close BottomSheet'),
-                                  //   onPressed: () => Navigator.pop(context),
-                                  // )
-                                ],
-                              ),
-                            ));
+                                ),
+
+                                // const Text('Modal BottomSheet'),
+                                // ElevatedButton(
+                                //   child: const Text('Close BottomSheet'),
+                                //   onPressed: () => Navigator.pop(context),
+                                // )
+                              ],
+                            ),
+                          ),
+                        );
                       },
                     );
                   },
@@ -342,7 +406,7 @@ class _QuizScreeState extends State<QuizScree> {
                 TileBid(
                   onClick: () {
                     buttonList = [
-                      true,
+                      false,
                       true,
                       false,
                       false,
