@@ -10,9 +10,11 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:quiz_dev2/quiz_servery.dart';
-import 'package:quiz_dev2/socialButton.dart';
+import 'package:quiz_dev2/TileBid.dart';
 
 import 'package:charts_flutter/flutter.dart' as charts;
+
+import 'appbarwithpicture.dart';
 
 class BarChartModel {
   String year;
@@ -42,7 +44,7 @@ class _QuizScreeState extends State<QuizScree> {
     ),
     BarChartModel(
       year: "B",
-      financial: 100,
+      financial: 55,
       color: charts.ColorUtil.fromDartColor(Colors.green),
     ),
     BarChartModel(
@@ -72,6 +74,9 @@ class _QuizScreeState extends State<QuizScree> {
     List<charts.Series<BarChartModel, String>> series = [
       charts.Series(
         id: "financial",
+        //measureUpperBoundFn: (BarChartModel series, _) => 100,
+        // measureUpperBoundFn: (BarChartModel series, int) => 100,
+        //  domainFn:(BarChartMode, int) => 100,
         data: data,
         domainFn: (BarChartModel series, _) => series.year,
         measureFn: (BarChartModel series, _) => series.financial,
@@ -82,10 +87,11 @@ class _QuizScreeState extends State<QuizScree> {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          title: Text("Live Quiz"),
+          leadingWidth: 45,
+          title: const Text("Live Quiz"),
           toolbarHeight: 100,
-          backgroundColor: Color(0xffF8922D),
-          leadingWidth: 42,
+          // backgroundColor: Color(0xffF8922D),
+          //leadingWidth: 42,
           leading: Padding(
             padding: const EdgeInsets.only(left: 12.0),
             child: GestureDetector(
@@ -98,6 +104,7 @@ class _QuizScreeState extends State<QuizScree> {
               ),
             ),
           ),
+          flexibleSpace: AppBarWithPicture(),
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -110,7 +117,7 @@ class _QuizScreeState extends State<QuizScree> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      width: 140,
+                      width: 58,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 12.0),
@@ -157,32 +164,36 @@ class _QuizScreeState extends State<QuizScree> {
                         // onStart: () => _controller.start(),
                       ),
                     ),
-                    Container(
-                      height: 40,
-                      width: 80,
-                      decoration: BoxDecoration(
-                        color: Colors.blue,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          SizedBox(
-                            height: 30,
-                            width: 30,
-                            child: Image.asset(
-                              "assets/vector3x.png",
-                              fit: BoxFit.contain,
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10.0, right: 6),
+                      child: Container(
+                        height: 35,
+                        width: 85,
+                        decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            SizedBox(
+                              height: 13,
+                              width: 30,
+                              child: Image.asset(
+                                "assets/vector3x.png",
+                                fit: BoxFit.contain,
+                              ),
                             ),
-                          ),
-                          Text(
-                            "17k",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 15,
+                            Text(
+                              "17k",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 17,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ],
@@ -191,7 +202,7 @@ class _QuizScreeState extends State<QuizScree> {
                   "Question 4 of 20",
                   style: TextStyle(
                     color: Color(0xff727272),
-                    fontSize: 16,
+                    fontSize: 20,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
@@ -352,9 +363,9 @@ class _QuizScreeState extends State<QuizScree> {
                   child: Text(
                     "4.  Where is the Taj Mahal located?",
                     style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        color: Color(0xff505050),
-                        fontSize: 20),
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black,
+                        fontSize: 22),
                   ),
                 ),
                 SizedBox(
@@ -393,7 +404,8 @@ class _QuizScreeState extends State<QuizScree> {
                     ];
                     setState(() {});
                   },
-                  title: "London,United",
+                  title: "London,United Kingdom",
+
                   titles: "A",
                   selectedColor: Colors.red,
                   id: 1,

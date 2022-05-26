@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:quiz_dev2/appbarwithpicture.dart';
 import 'package:quiz_dev2/quiz_servery.dart';
 
 class practice extends StatefulWidget {
@@ -16,10 +17,10 @@ class _practiceState extends State<practice> {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
+          leadingWidth: 45,
           title: const Text("Practice Quiz"),
           toolbarHeight: 100,
-          backgroundColor: const Color(0xffF8922D),
-          leadingWidth: 42,
+          automaticallyImplyLeading: false,
           leading: Padding(
             padding: const EdgeInsets.only(left: 12.0),
             child: GestureDetector(
@@ -28,10 +29,12 @@ class _practiceState extends State<practice> {
               },
               child: Image.asset(
                 'assets/frame293x.png',
-                fit: BoxFit.contain,
+                //height: 10, width: 10,
+                // fit: BoxFit.contain,
               ),
             ),
           ),
+          flexibleSpace: const AppBarWithPicture(),
         ),
         body: Padding(
           padding: const EdgeInsets.only(
@@ -44,10 +47,14 @@ class _practiceState extends State<practice> {
             itemCount: 10,
             itemBuilder: (context, index) {
               return Container(
-                  margin: EdgeInsets.only(bottom: 10),
+                  margin: const EdgeInsets.only(bottom: 10),
                   child: Card(
-                    elevation: 2,
+                    elevation: 4,
                     shape: RoundedRectangleBorder(
+                        side: BorderSide(
+                          color: Colors.grey,
+                          width: .5,
+                        ),
                         borderRadius: BorderRadius.circular(8)),
                     //Wrap with IntrinsicHeight
                     child: IntrinsicHeight(

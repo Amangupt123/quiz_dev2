@@ -77,11 +77,12 @@ class _TileBidState extends State<TileBid> {
                 widget.title,
                 //widget.title,
                 style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w500,
-                    color: Color(0xff000000)
-                    //color: widget.selected ? Colors.white : Colors.grey,
-                    ),
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500,
+
+                  color: !widget.selected ? Colors.black : Colors.white,
+                  //color: widget.selected ? Colors.white : Colors.grey,
+                ),
               ),
             ],
           ),
