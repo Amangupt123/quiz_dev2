@@ -56,19 +56,18 @@ class _practiceState extends State<practice> {
                           width: .5,
                         ),
                         borderRadius: BorderRadius.circular(8)),
-                    //Wrap with IntrinsicHeight
                     child: IntrinsicHeight(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: <Widget>[
                           Container(
-                            height: 70,
+                            height: 90,
                             decoration: const BoxDecoration(
                               borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(8),
                                   bottomLeft: Radius.circular(8)),
-                              color: Colors.orangeAccent,
+                              color: Color(0xffFC942D),
                             ),
                             width: 8,
                           ),
@@ -80,28 +79,34 @@ class _practiceState extends State<practice> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Text ${index + 1}",
-                                        style: const TextStyle(
-                                            fontSize: 17,
-                                            color: const Color(
-                                              0xff111128,
-                                            ),
-                                            fontWeight: FontWeight.w900),
-                                      ),
-                                      Text(
-                                        "Date ${17 - index} Apr 2022",
-                                        style: const TextStyle(
-                                            fontWeight: FontWeight.w400,
-                                            fontSize: 15),
-                                      ),
-                                    ],
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 20.0),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "Text ${index + 1}",
+                                          style: const TextStyle(
+                                              fontSize: 17,
+                                              color: const Color(
+                                                0xff111128,
+                                              ),
+                                              fontWeight: FontWeight.w900),
+                                        ),
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Text(
+                                          "Date ${17 - index} Apr 2022",
+                                          style: const TextStyle(
+                                              fontWeight: FontWeight.w400,
+                                              fontSize: 15),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                   Image.asset(
                                     "assets/play.png",

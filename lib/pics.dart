@@ -2,16 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
 class BarChartModel {
-  String year;
+  String text;
+  List<String>? xAxis;
+  List<String>? yAxis;
+
   int financial;
   final charts.Color color;
   dynamic per;
 
   BarChartModel({
-    required this.year,
+    required this.text,
     required this.financial,
     required this.color,
     required this.per,
+    this.xAxis,
+    this.yAxis,
   });
 }
 
@@ -25,22 +30,22 @@ class pics extends StatefulWidget {
 class _picsState extends State<pics> {
   final List<BarChartModel> data = [
     BarChartModel(
-        year: "A",
+        text: "A",
         financial: 15,
         color: charts.ColorUtil.fromDartColor(Colors.red),
         per: 15),
     BarChartModel(
-        year: "B",
+        text: "B",
         financial: 100,
         color: charts.ColorUtil.fromDartColor(Colors.green),
         per: 15),
     BarChartModel(
-        year: "C",
+        text: "C",
         financial: 8,
         color: charts.ColorUtil.fromDartColor(Colors.red),
         per: 15),
     BarChartModel(
-        year: "c",
+        text: "c",
         financial: 22,
         color: charts.ColorUtil.fromDartColor(Colors.red),
         per: 15),
@@ -56,7 +61,7 @@ class _picsState extends State<pics> {
       charts.Series(
         id: "financial",
         data: data,
-        domainFn: (BarChartModel series, _) => series.year,
+        domainFn: (BarChartModel series, _) => series.text,
         measureFn: (BarChartModel series, _) => series.financial,
         colorFn: (BarChartModel series, _) => series.color,
       ),

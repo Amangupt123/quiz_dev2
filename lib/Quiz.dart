@@ -108,9 +108,10 @@ class _QuizScreeState extends State<QuizScree> {
         ),
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(25.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              //    mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -128,7 +129,7 @@ class _QuizScreeState extends State<QuizScree> {
 
                         controller: _controller,
 
-                        width: MediaQuery.of(context).size.width / 6.5,
+                        width: MediaQuery.of(context).size.width / 5.5,
 
                         height: MediaQuery.of(context).size.height / 10,
 
@@ -149,7 +150,7 @@ class _QuizScreeState extends State<QuizScree> {
                         strokeCap: StrokeCap.round,
 
                         textStyle: const TextStyle(
-                          fontSize: 38.0,
+                          fontSize: 40.0,
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                         ),
@@ -198,6 +199,9 @@ class _QuizScreeState extends State<QuizScree> {
                     ),
                   ],
                 ),
+                SizedBox(
+                  height: 10,
+                ),
                 Text(
                   "Question 4 of 20",
                   style: TextStyle(
@@ -207,11 +211,11 @@ class _QuizScreeState extends State<QuizScree> {
                   ),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 17,
                 ),
                 Container(
                   height: 7,
-                  width: 400,
+                  width: 385,
                   color: Color(0xffF4F6F8),
                   child: Row(
                     children: [
@@ -227,7 +231,7 @@ class _QuizScreeState extends State<QuizScree> {
                   ),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 InkWell(
                   onTap: () {
@@ -255,7 +259,7 @@ class _QuizScreeState extends State<QuizScree> {
                           height: 530,
                           //color: Colors.white,
                           child: Padding(
-                            padding: const EdgeInsets.only(top: 8.0),
+                            padding: const EdgeInsets.only(top: 22.0),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               mainAxisSize: MainAxisSize.min,
@@ -270,7 +274,7 @@ class _QuizScreeState extends State<QuizScree> {
                                     controller: _controller,
 
                                     width:
-                                        MediaQuery.of(context).size.width / 6.5,
+                                        MediaQuery.of(context).size.width / 5.5,
 
                                     height:
                                         MediaQuery.of(context).size.height / 10,
@@ -292,7 +296,7 @@ class _QuizScreeState extends State<QuizScree> {
                                     strokeCap: StrokeCap.round,
 
                                     textStyle: const TextStyle(
-                                      fontSize: 38.0,
+                                      fontSize: 40.0,
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -308,7 +312,7 @@ class _QuizScreeState extends State<QuizScree> {
                                   ),
                                 ),
                                 SizedBox(
-                                  height: 10,
+                                  height: 18,
                                 ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -336,13 +340,39 @@ class _QuizScreeState extends State<QuizScree> {
                                   ],
                                 ),
                                 SizedBox(
-                                  height: 80,
+                                  height: 60,
                                 ),
 
                                 SizedBox(
                                   height: 300,
                                   width: 300,
                                   child: charts.BarChart(
+                                    domainAxis: charts.OrdinalAxisSpec(
+                                        renderSpec:
+                                            charts.SmallTickRendererSpec(
+
+                                                // Tick and Label styling here.
+                                                labelStyle:
+                                                    charts.TextStyleSpec(
+                                                        lineHeight: 1.5,
+                                                        fontSize:
+                                                            18, // size in Pts.
+                                                        color: charts
+                                                            .MaterialPalette
+                                                            .black),
+
+                                                // Change the line colors to match text color.
+                                                lineStyle: charts.LineStyleSpec(
+                                                    color: charts
+                                                        .MaterialPalette
+                                                        .black))),
+                                    primaryMeasureAxis: charts.NumericAxisSpec(
+                                        renderSpec: charts.GridlineRendererSpec(
+                                      // Tick and Label styling here.
+                                      labelStyle: charts.TextStyleSpec(
+                                          fontSize: 18, // size in Pts.
+                                          color: charts.MaterialPalette.black),
+                                    )),
                                     series,
                                     animate: true,
                                   ),
@@ -365,34 +395,27 @@ class _QuizScreeState extends State<QuizScree> {
                     style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.black,
-                        fontSize: 22),
+                        fontSize: 21),
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
-                Container(
-                  height: 157,
-                  width: 420,
-                  decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => quiz_servey()));
+                  },
                   child: Padding(
-                    padding: const EdgeInsets.only(right: 35.0),
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => quiz_servey()));
-                      },
-                      child: Image.asset(
-                        'assets/tajmahal3x.png',
-                      ),
+                    padding: const EdgeInsets.all(20.0),
+                    child: Image.asset(
+                      'assets/tajmahal3x.png',
+                      // width: 300,
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 16,
                 ),
                 TileBid(
                   onClick: () {
