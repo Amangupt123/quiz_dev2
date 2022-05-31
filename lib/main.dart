@@ -4,6 +4,7 @@ import 'package:quiz_dev2/pics.dart';
 import 'package:quiz_dev2/quiz_servery.dart';
 import 'package:quiz_dev2/TileBid.dart';
 import 'package:quiz_dev2/statistics.dart';
+import 'package:quiz_dev2/myprofile.dart';
 import 'TileBid.dart';
 
 import 'Quiz.dart';
@@ -25,6 +26,9 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
         // home: QuizScree(),
         home: statistics());
+    // home: DashedLine());
+    //  home: MyHomepage());
     //home: pics());
+    //  home: myprofile());
   }
 }
