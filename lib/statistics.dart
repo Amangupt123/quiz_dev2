@@ -25,7 +25,7 @@ class _statisticsState extends State<statistics> {
             children: [
               const Text("Statistics"),
               InkWell(
-                onTap: showModalBottomSheet<void>(),
+                // onTap: showModalBottomSheet<void>(),
                 child: Image.asset(
                   "assets/trophi.png",
                   scale: 3,

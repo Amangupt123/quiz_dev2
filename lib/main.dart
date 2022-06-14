@@ -5,9 +5,11 @@ import 'package:quiz_dev2/quiz_servery.dart';
 import 'package:quiz_dev2/TileBid.dart';
 import 'package:quiz_dev2/statistics.dart';
 import 'package:quiz_dev2/myprofile.dart';
+import 'package:quiz_dev2/wallet.dart';
 import 'TileBid.dart';
 
 import 'Quiz.dart';
+import 'demo.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,9 +25,10 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        // home: QuizScree(),
-        home: statistics());
+    return MaterialApp(home: MyHomePage());
+    // home: QuizScree(),
+    // home: statistics());
+    //home: wallet());
     // home: DashedLine());
     //  home: MyHomepage());
     //home: pics());
