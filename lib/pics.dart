@@ -81,7 +81,7 @@ class _picsState extends State<pics> {
             Container(
               width: MediaQuery.of(context).size.width,
               height: 100,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage("assets/top_header@3x.png"),
                   fit: BoxFit.fitWidth,

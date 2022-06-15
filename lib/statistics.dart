@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:quiz_dev2/wallet.dart';
 
 import 'appbarwithpicture.dart';
 
@@ -24,12 +25,9 @@ class _statisticsState extends State<statistics> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const Text("Statistics"),
-              InkWell(
-                // onTap: showModalBottomSheet<void>(),
-                child: Image.asset(
-                  "assets/trophi.png",
-                  scale: 3,
-                ),
+              Image.asset(
+                "assets/trophi.png",
+                scale: 3,
               )
             ],
           ),
@@ -42,9 +40,14 @@ class _statisticsState extends State<statistics> {
               onTap: () {
                 log("Button pressed");
               },
-              child: Image.asset(
-                'assets/frame293x.png',
-                fit: BoxFit.contain,
+              child: InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Image.asset(
+                  'assets/frame293x.png',
+                  fit: BoxFit.contain,
+                ),
               ),
             ),
           ),

@@ -3,6 +3,7 @@ import 'package:quiz_dev2/appbarwithpicture.dart';
 import 'package:quiz_dev2/pics.dart';
 import 'package:quiz_dev2/quiz_servery.dart';
 import 'package:quiz_dev2/TileBid.dart';
+import 'package:quiz_dev2/referral.dart';
 import 'package:quiz_dev2/statistics.dart';
 import 'package:quiz_dev2/myprofile.dart';
 import 'package:quiz_dev2/wallet.dart';
@@ -25,8 +26,9 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: wallet());
-    // home: QuizScree (),
+    return MaterialApp(home: referral());
+    //home: wallet());
+    //home: QuizScree());
     // home: statistics());
     //home: wallet());
     // home: DashedLine());

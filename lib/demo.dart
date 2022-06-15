@@ -1,5 +1,6 @@
 // ignore_for_file: unnecessary_const
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -19,46 +20,118 @@ class _MyHomePageState extends State<MyHomePage>
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    return Column(
       children: <Widget>[
-        const Card(child: ListTile(title: Text('Trasaction History'))),
+        Container(
+          height: 60,
+          width: MediaQuery.of(context).size.width * 0.95,
+          child: const Padding(
+            padding: EdgeInsets.all(20.0),
+            child: Text(
+              "Transaction History",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+            ),
+          ),
+        ),
         Container(
           decoration: BoxDecoration(
-            color: Colors.white,
-            border: Border.all(color: Colors.blueAccent),
+            color: Color(0xffF4F6F8),
+            border: Border.all(color: Color(0xffF4F6F8)),
           ),
-          height: 70,
+          height: 50,
           child: TabBar(
-            indicatorColor: Colors.black,
+            indicatorColor: Colors.amber,
             indicatorWeight: 3,
+
+            //indicator: BoxDecoration(color: Color(0xffF4F6F8)),
             labelColor: Colors.black,
             unselectedLabelColor: Colors.grey,
             controller: _controller,
             tabs: const [
-              Tab(text: 'Redeemed'),
+              Tab(text: 'Credit'),
               Tab(text: 'Redeemed'),
             ],
           ),
         ),
+        const SizedBox(
+          height: 10,
+        ),
         Container(
-          height: 100.0,
-          child: TabBarView(
-            controller: _controller,
-            children: <Widget>[
-              Column(
-                children: [
-                  Card(child: Text("yes1")),
-                  Card(child: Text("yes2")),
+          height: 80.0,
+          width: MediaQuery.of(context).size.width * 0.97,
+          child: TabBarView(controller: _controller, children: <Widget>[
+            Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  border: Border.all(color: Colors.grey)),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  Padding(
+                    padding: EdgeInsets.only(left: 330.0),
+                    child: Text("28 Apr,2022"),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text(
+                        "You won the Master Minds. Your winning \n amount is ₹345.00",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w400)),
+                  )
                 ],
               ),
-              Column(
-                children: [
-                  Card(child: Text("no1")),
-                  Card(child: Text("no2")),
+              // Padding(
+              //   padding: const EdgeInsets.only(left: 338.0),
+              //   child: Card(child: Text("28 Apr,2022")),
+              // ),
+              // Card(
+              //     child: Text(
+              //   "You won the Master Minds. Your winning \n amount is ₹345.00",
+              //   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+              // )),
+            ),
+            Container(
+              height: 100,
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  border: Border.all(color: Colors.grey)),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  Padding(
+                    padding: EdgeInsets.only(left: 330.0),
+                    child: Text("30 Apr,2022"),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text(
+                        "You won the Master Minds. Your winning \n amount is ₹375.00"),
+                  )
                 ],
               ),
-            ],
-          ),
+              // Padding(
+              //   padding: const EdgeInsets.only(left: 338.0),
+              //   child: Card(child: Text("28 Apr,2022")),
+              // ),
+              // Card(
+              //     child: Text(
+              //   "You won the Master Minds. Your winning \n amount is ₹345.00",
+              //   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+              // )),
+            )
+          ]
+
+              // Column(
+              //   children: [
+              //     Card(child: Text("no1")),
+              //     Card(child: Text("no2")),
+              //   ],
+              // ),
+
+              ),
         ),
         // Card(
         //   child: ListTile(

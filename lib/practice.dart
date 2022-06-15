@@ -2,6 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz_dev2/appbarwithpicture.dart';
 import 'package:quiz_dev2/quiz_servery.dart';
+import 'package:quiz_dev2/statistics.dart';
+import 'package:quiz_dev2/wallet.dart';
 
 class practice extends StatefulWidget {
   const practice({Key? key}) : super(key: key);
@@ -18,7 +20,12 @@ class _practiceState extends State<practice> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           leadingWidth: 45,
-          title: const Text("Practice Quiz"),
+          title: InkWell(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => statistics()));
+              },
+              child: const Text("Practice Quiz")),
           toolbarHeight: 100,
           automaticallyImplyLeading: false,
           leading: Padding(

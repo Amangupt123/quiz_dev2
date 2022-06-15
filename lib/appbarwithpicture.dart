@@ -8,7 +8,7 @@ class AppBarWithPicture extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         image: DecorationImage(
           image: AssetImage(
             "assets/top_header@3x.png",

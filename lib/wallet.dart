@@ -24,7 +24,7 @@ class _walletState extends State<wallet> {
             //mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(01.0),
                 child: Image.asset(
                   "assets/drawer.png",
                   scale: 2.6,
@@ -145,8 +145,8 @@ class _walletState extends State<wallet> {
                   width: MediaQuery.of(context).size.width,
                   decoration: const BoxDecoration(
                     borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(25),
-                      topRight: Radius.circular(25),
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20),
                     ),
                     color: const Color(0xffFFFFFF),
                   ),
