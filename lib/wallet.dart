@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:quiz_dev2/demo.dart';
 
 import 'appbarwithpicture.dart';
 
@@ -78,21 +79,14 @@ class _walletState extends State<wallet> {
                           const SizedBox(
                             width: 20,
                           ),
-                          Image.asset(
-                            "assets/Contact.png",
-                            scale: 2.3,
-                          ),
-                          const SizedBox(
-                            width: 12,
-                          ),
+                          Image.asset("assets/Contact.png", scale: 2.3),
+                          const SizedBox(width: 12),
                           const Text(
                             "Your KYC is Verified",
                             style: TextStyle(
                                 fontSize: 18, fontWeight: FontWeight.w500),
                           ),
-                          const SizedBox(
-                            width: 5,
-                          ),
+                          const SizedBox(width: 5),
                           Image.asset(
                             "assets/right.png",
                             scale: 2.3,
@@ -156,12 +150,7 @@ class _walletState extends State<wallet> {
                     ),
                     color: const Color(0xffFFFFFF),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Text("Transaction History",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w700)),
-                  ),
+                  child: MyHomePage(),
                 ),
               ],
             )

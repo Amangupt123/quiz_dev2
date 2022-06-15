@@ -19,69 +19,61 @@ class _MyHomePageState extends State<MyHomePage>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // appBar: AppBar(
-      //   title: Text('TestProject'),
-      // ),
-      body: ListView(
-        children: <Widget>[
-          Card(
-            child: ListTile(
-              title: const Text('Trasaction History'),
-              //title: const Text('Some information'),
-            ),
+    return ListView(
+      children: <Widget>[
+        const Card(child: ListTile(title: Text('Trasaction History'))),
+        Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border.all(color: Colors.blueAccent),
           ),
-          Container(
-            decoration: BoxDecoration(color: Colors.grey),
-            height: 70,
-            child: TabBar(
-              unselectedLabelColor: Colors.black,
-
-              indicatorColor: Colors.amber,
-
-              //  labelColor: Colors.white,
-              controller: _controller,
-              tabs: [
-                Tab(
-                  //icon: const Icon(Icons.home),
-                  text: 'Credit',
-                ),
-                // VerticalDivider(
-                //   color: Colors.black,
-                //   thickness: 1,
-                // ),
-                Tab(
-                  // icon: const Icon(Icons.my_location),
-                  text: 'Redeemed',
-                ),
-              ],
-            ),
+          height: 70,
+          child: TabBar(
+            indicatorColor: Colors.black,
+            indicatorWeight: 3,
+            labelColor: Colors.black,
+            unselectedLabelColor: Colors.grey,
+            controller: _controller,
+            tabs: const [
+              Tab(text: 'Redeemed'),
+              Tab(text: 'Redeemed'),
+            ],
           ),
-          Container(
-            height: 60.0,
-            child: TabBarView(
-              controller: _controller,
-              children: const <Widget>[
-                Card(child: Text("yes")),
-                Card(child: Text("no")),
-              ],
-            ),
+        ),
+        Container(
+          height: 100.0,
+          child: TabBarView(
+            controller: _controller,
+            children: <Widget>[
+              Column(
+                children: [
+                  Card(child: Text("yes1")),
+                  Card(child: Text("yes2")),
+                ],
+              ),
+              Column(
+                children: [
+                  Card(child: Text("no1")),
+                  Card(child: Text("no2")),
+                ],
+              ),
+            ],
           ),
-          // Card(
-          //   child: ListTile(
-          //     title: const Text('Some more information'),
-          //   ),
-          // ),
-          // ElevatedButton(
-          //   //  color: Theme.of(context).primaryColor,
-          //   onPressed: () {}, child: null,
-          //   // child: const Text(
-          //   //   'Search for POIs',
-          //   //   style: const TextStyle(color: Colors.white),
-          //   // ),
-          // ),
-        ],
-      ),
+        ),
+        // Card(
+        //   child: ListTile(
+        //     title: const Text('Some more information'),
+        //   ),
+        // ),
+        // ElevatedButton(
+        //   //  color: Theme.of(context).primaryColor,
+        //   onPressed: () {}, child: null,
+        //   // child: const Text(
+        //   //   'Search for POIs',
+        //   //   style: const TextStyle(color: Colors.white),
+        //   // ),
+        // ),
+      ],
     );
   }
 }
