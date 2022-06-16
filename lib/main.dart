@@ -6,6 +6,7 @@ import 'package:quiz_dev2/TileBid.dart';
 import 'package:quiz_dev2/referral.dart';
 import 'package:quiz_dev2/statistics.dart';
 import 'package:quiz_dev2/myprofile.dart';
+import 'package:quiz_dev2/verifykyc.dart';
 import 'package:quiz_dev2/wallet.dart';
 import 'TileBid.dart';
 
@@ -26,8 +27,10 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: referral());
-    //home: wallet());
+    return MaterialApp(
+        //home: verifykyc());
+        //home: referral());
+        home: wallet());
     //home: QuizScree());
     // home: statistics());
     //home: wallet());

@@ -4,6 +4,7 @@ import 'dart:developer';
 
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:quiz_dev2/verifykyc.dart';
 
 import 'appbarwithpicture.dart';
 import 'myseparator.dart';
@@ -38,7 +39,11 @@ class _referralState extends State<referral>
         backgroundColor: Colors.white,
         appBar: AppBar(
           leadingWidth: 45,
-          title: const Text("Referral & Earn"),
+          title: InkWell(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: const Text("Referral & Earn")),
           toolbarHeight: 100,
           // backgroundColor: Color(0xffF8922D),
           //leadingWidth: 42,
@@ -48,9 +53,15 @@ class _referralState extends State<referral>
               onTap: () {
                 log("Button pressed");
               },
-              child: Image.asset(
-                'assets/drawer.png',
-                fit: BoxFit.contain,
+              child: InkWell(
+                onTap: (() {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => verifykyc()));
+                }),
+                child: Image.asset(
+                  'assets/drawer.png',
+                  fit: BoxFit.contain,
+                ),
               ),
             ),
           ),

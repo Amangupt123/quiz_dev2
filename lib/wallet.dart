@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:quiz_dev2/demo.dart';
+import 'package:quiz_dev2/referral.dart';
 
 import 'appbarwithpicture.dart';
 
@@ -40,9 +41,15 @@ class _walletState extends State<wallet> {
               const SizedBox(
                 width: 240,
               ),
-              Image.asset(
-                "assets/icon.png",
-                scale: 2.6,
+              InkWell(
+                onTap: (() {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => referral()));
+                }),
+                child: Image.asset(
+                  "assets/icon.png",
+                  scale: 2.6,
+                ),
               )
             ],
           ),
