@@ -15,7 +15,10 @@ class _MyHomePageState extends State<MyHomePage>
   @override
   void initState() {
     super.initState();
-    _controller = TabController(length: 2, vsync: this);
+    _controller = TabController(vsync: this, length: 2)
+      ..addListener(() {
+        setState(() {});
+      });
   }
 
   @override
@@ -38,25 +41,52 @@ class _MyHomePageState extends State<MyHomePage>
             color: const Color(0xffF4F6F8),
             border: Border.all(color: const Color(0xffF4F6F8)),
           ),
-          height: 50,
-          child: TabBar(
-            indicatorColor: Colors.amber,
-            indicatorWeight: 3,
-            // indicator: BoxDecoration(
-            //   // borderRadius: BorderRadius.circular(
-            //   //   10.0,
-            //   // ),
-            //   color: Colors.white,
-            //   //  border: Border.all(width: 0.5, color: Colors.grey)
-            // ),
+          // height: 50,
+          child: Stack(
+            children: [
+              Positioned(
+                bottom: 0,
+                child: Row(
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.5,
+                      height: 3,
+                      color: _controller.index == 0
+                          ? Colors.amber
+                          : Colors.transparent,
+                    ),
+                    Container(
+                      // margin: EdgeInsets.only(right: 10),
+                      width: MediaQuery.of(context).size.width * 0.5,
+                      height: 3,
+                      //  color:Colors.red,
+                      color: _controller.index == 1
+                          ? Colors.amber
+                          : Colors.transparent,
+                    ),
+                  ],
+                ),
+              ),
+              TabBar(
+                // indicatorColor: Colors.amber,
+                // indicatorWeight: 3,
+                // indicator: BoxDecoration(
 
-            //indicator: BoxDecoration(color: Color(0xffF4F6F8)),
-            labelColor: Colors.black,
-            unselectedLabelColor: Colors.grey,
-            controller: _controller,
-            tabs: const [
-              Tab(text: 'Credit'),
-              Tab(text: 'Redeemed'),
+                //     color: Colors.white,
+                //     border: Border.all(width: 0.5, color: Colors.grey)),
+
+                indicator: BoxDecoration(color: Colors.white),
+
+                padding: const EdgeInsets.only(bottom: 5),
+                labelColor: Colors.black,
+                unselectedLabelColor: Colors.grey,
+                controller: _controller,
+                tabs: [
+                  Tab(text: "Credit"),
+                  Tab(text: "Redeemed"),
+                  //  Tab(text: 'Redeemed'),
+                ],
+              ),
             ],
           ),
         ),
@@ -107,7 +137,7 @@ class _MyHomePageState extends State<MyHomePage>
               ),
             ),
             Container(
-              height: 550,
+              //height: 400,
               // height: MediaQuery.of(context).size.height * 0.9,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
@@ -148,40 +178,9 @@ class _MyHomePageState extends State<MyHomePage>
                   ),
                 ],
               ),
-              // Padding(
-              //   padding: const EdgeInsets.only(left: 338.0),
-              //   child: Card(child: Text("28 Apr,2022")),
-              // ),
-              // Card(
-              //     child: Text(
-              //   "You won the Master Minds. Your winning \n amount is ₹345.00",
-              //   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
-              // )),
             )
-          ]
-
-              // Column(
-              //   children: [
-              //     Card(child: Text("no1")),
-              //     Card(child: Text("no2")),
-              //   ],
-              // ),
-
-              ),
+          ]),
         ),
-        // Card(
-        //   child: ListTile(
-        //     title: const Text('Some more information'),
-        //   ),
-        // ),
-        // ElevatedButton(
-        //   //  color: Theme.of(context).primaryColor,
-        //   onPressed: () {}, child: null,
-        //   // child: const Text(
-        //   //   'Search for POIs',
-        //   //   style: const TextStyle(color: Colors.white),
-        //   // ),
-        // ),
       ],
     );
   }

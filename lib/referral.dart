@@ -165,7 +165,7 @@ class _referralState extends State<referral>
                 const SizedBox(height: 20),
                 Container(
                   width: MediaQuery.of(context).size.width * 0.86,
-                  height: MediaQuery.of(context).size.height * 0.07,
+                  height: MediaQuery.of(context).size.height * 0.075,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: Color(0xffF4F6F8),

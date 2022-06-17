@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_dev2/appbarwithpicture.dart';
+import 'package:quiz_dev2/custum.dart';
 import 'package:quiz_dev2/pics.dart';
 import 'package:quiz_dev2/quiz_servery.dart';
 import 'package:quiz_dev2/TileBid.dart';
@@ -28,6 +29,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        //home: custum());
         //home: verifykyc());
         //home: referral());
         home: wallet());
