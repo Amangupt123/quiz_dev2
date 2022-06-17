@@ -13,7 +13,7 @@ class AppBarWithPicture extends StatelessWidget {
           image: AssetImage(
             "assets/top_header@3x.png",
           ),
-          fit: BoxFit.fitWidth,
+          fit: BoxFit.fill,
         ),
       ),
       width: MediaQuery.of(context).size.width,

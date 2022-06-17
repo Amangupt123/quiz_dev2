@@ -25,21 +25,21 @@ class _walletState extends State<wallet> {
             //mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
-                padding: const EdgeInsets.all(01.0),
+                padding: const EdgeInsets.all(0.0),
                 child: Image.asset(
                   "assets/drawer.png",
                   scale: 2.6,
                 ),
               ),
-              const SizedBox(
-                width: 10,
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.02,
               ),
               // SizedBox(
               //   width: 1,
               // ),
               const Text("Wallet"),
-              const SizedBox(
-                width: 240,
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.5,
               ),
               InkWell(
                 onTap: (() {
@@ -48,7 +48,7 @@ class _walletState extends State<wallet> {
                 }),
                 child: Image.asset(
                   "assets/icon.png",
-                  scale: 2.6,
+                  scale: 2.8,
                 ),
               )
             ],
@@ -115,8 +115,14 @@ class _walletState extends State<wallet> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Image.asset("assets/two.png", scale: 2.2),
-                          Image.asset("assets/with.png", scale: 2.5),
+                          Image.asset(
+                            "assets/two.png",
+                            width: MediaQuery.of(context).size.width * 0.25,
+                          ),
+                          Image.asset(
+                            "assets/with.png",
+                            width: MediaQuery.of(context).size.width * 0.30,
+                          ),
                         ],
                       ),
                     ),
@@ -131,11 +137,14 @@ class _walletState extends State<wallet> {
                         children: [
                           SvgPicture.asset(
                             "assets/five.svg",
-                            width: 165,
+                            width: MediaQuery.of(context).size.width * 0.35,
+                          ),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.02,
                           ),
                           SvgPicture.asset(
                             "assets/fivt.svg",
-                            width: 165,
+                            width: MediaQuery.of(context).size.width * 0.35,
                           )
                         ],
                       ),
@@ -144,11 +153,11 @@ class _walletState extends State<wallet> {
                 ),
               ),
             ),
-            const SizedBox(height: 18),
+            const SizedBox(height: 20),
             Column(
               children: [
                 Container(
-                  height: MediaQuery.of(context).size.height * 0.505,
+                  height: MediaQuery.of(context).size.height * 0.526,
                   width: MediaQuery.of(context).size.width,
                   decoration: const BoxDecoration(
                     borderRadius: const BorderRadius.only(

@@ -188,7 +188,7 @@ class _verifykycState extends State<verifykyc> {
                       children: [
                         Image.asset(
                           "assets/document.png",
-                          scale: 2.7,
+                          width: MediaQuery.of(context).size.width * 0.43,
                         ),
                         Positioned(
                           bottom: MediaQuery.of(context).size.height * 0.125,
@@ -269,7 +269,7 @@ class _verifykycState extends State<verifykyc> {
                       children: [
                         Image.asset(
                           "assets/document.png",
-                          scale: 2.7,
+                          width: MediaQuery.of(context).size.width * 0.43,
                         ),
                         Positioned(
                           bottom: MediaQuery.of(context).size.height * 0.125,
@@ -327,21 +327,28 @@ class _verifykycState extends State<verifykyc> {
 
                                   //   contentPadding: EdgeInsets.only(top: 10.0),
                                   content: Container(
-                                    width: 1000.0,
-                                    height: 290.0,
+                                    width: MediaQuery.of(context).size.width *
+                                        0.83,
+                                    height: MediaQuery.of(context).size.height *
+                                        0.39,
                                     child: Column(
                                       children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 340.0),
-                                          child: InkWell(
-                                            onTap: (() {
-                                              Navigator.pop(context);
-                                            }),
-                                            child: Image.asset(
-                                              "assets/cross2.png",
-                                              scale: 3.0,
-                                            ),
+                                        InkWell(
+                                          onTap: (() {
+                                            Navigator.pop(context);
+                                          }),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                            children: [
+                                              Image.asset(
+                                                "assets/cross2.png",
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.06,
+                                              ),
+                                            ],
                                           ),
                                         ),
                                         Image.asset("assets/contact.png",

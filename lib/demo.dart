@@ -35,13 +35,20 @@ class _MyHomePageState extends State<MyHomePage>
         ),
         Container(
           decoration: BoxDecoration(
-            color: Color(0xffF4F6F8),
-            border: Border.all(color: Color(0xffF4F6F8)),
+            color: const Color(0xffF4F6F8),
+            border: Border.all(color: const Color(0xffF4F6F8)),
           ),
           height: 50,
           child: TabBar(
             indicatorColor: Colors.amber,
             indicatorWeight: 3,
+            // indicator: BoxDecoration(
+            //   // borderRadius: BorderRadius.circular(
+            //   //   10.0,
+            //   // ),
+            //   color: Colors.white,
+            //   //  border: Border.all(width: 0.5, color: Colors.grey)
+            // ),
 
             //indicator: BoxDecoration(color: Color(0xffF4F6F8)),
             labelColor: Colors.black,
@@ -57,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage>
           height: 10,
         ),
         Container(
-          height: 80.0,
+          height: MediaQuery.of(context).size.height * 0.1,
           width: MediaQuery.of(context).size.width * 0.97,
           child: TabBarView(controller: _controller, children: <Widget>[
             Container(
@@ -67,32 +74,41 @@ class _MyHomePageState extends State<MyHomePage>
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children: [
                   Padding(
-                    padding: EdgeInsets.only(left: 330.0),
-                    child: Text("28 Apr,2022"),
+                    padding: EdgeInsets.only(
+                        left: MediaQuery.of(context).size.width * 0.72),
+                    child: const Text("28 Apr,2022"),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text(
-                        "You won the Master Minds. Your winning \n amount is ₹345.00",
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w400)),
-                  )
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text("You won the Master Minds. Your winning",
+                            style: const TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.w400)),
+                        Row(
+                          children: const [
+                            Text(" amount is ₹",
+                                style: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.w400)),
+                            Text("345.00",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600,
+                                    color: Color(0xff000000))),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
-              // Padding(
-              //   padding: const EdgeInsets.only(left: 338.0),
-              //   child: Card(child: Text("28 Apr,2022")),
-              // ),
-              // Card(
-              //     child: Text(
-              //   "You won the Master Minds. Your winning \n amount is ₹345.00",
-              //   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
-              // )),
             ),
             Container(
-              height: 100,
+              height: 550,
+              // height: MediaQuery.of(context).size.height * 0.9,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
@@ -100,16 +116,36 @@ class _MyHomePageState extends State<MyHomePage>
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children: [
                   Padding(
-                    padding: EdgeInsets.only(left: 330.0),
-                    child: Text("30 Apr,2022"),
+                    padding: EdgeInsets.only(
+                      left: MediaQuery.of(context).size.width * 0.72,
+                    ),
+                    child: const Text("30 Apr,2022"),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text(
-                        "You won the Master Minds. Your winning \n amount is ₹375.00"),
-                  )
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text("You won the Master Minds. Your winning",
+                            style: const TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.w400)),
+                        Row(
+                          children: const [
+                            Text(" amount is ₹",
+                                style: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.w400)),
+                            Text("345.00",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600,
+                                    color: Color(0xff000000))),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
               // Padding(
