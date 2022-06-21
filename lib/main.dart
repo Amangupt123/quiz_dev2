@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_dev2/api.dart';
 import 'package:quiz_dev2/appbarwithpicture.dart';
 import 'package:quiz_dev2/custum.dart';
 import 'package:quiz_dev2/pics.dart';
@@ -32,7 +33,7 @@ class _MyAppState extends State<MyApp> {
         //home: custum());
         //home: verifykyc());
         //home: referral());
-        home: wallet());
+        home: Api());
     //home: QuizScree());
     // home: statistics());
     //home: wallet());
