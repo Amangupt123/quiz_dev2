@@ -25,8 +25,11 @@ class _ApiState extends State<Api> {
   Future<CatFactResponse> getUser() async {
     final Dio _dio = Dio();
     // Perform GET request to the endpoint "/users/<id>"
-    Response response = await _dio
-        .get("http://23.23.68.11/quiz_app/admin/public/api/refferal-code");
+    Response response = await _dio.get(
+        "http://23.23.68.11/quiz_app/admin/public/api/refferal-code",
+        options: Options(headers: {
+          'Authorization': 'Bearer $token',
+        }));
 
     // Prints the raw data returned by the server
     print('User Info: ${response.data}');
