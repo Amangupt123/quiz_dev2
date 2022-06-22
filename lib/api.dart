@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:quiz_dev2/cat_fact_response.dart';
 import 'package:quiz_dev2/token.dart';
- import 'package:dio/dio.dart';
+import 'package:dio/dio.dart';
 
 class Api extends StatefulWidget {
   const Api({Key? key}) : super(key: key);
@@ -16,25 +16,27 @@ class Api extends StatefulWidget {
 
 class _ApiState extends State<Api> {
   CatFactResponse? x;
-  Future<void> getdata() async {
-   
 
-class DioClient {
-  final Dio _dio = Dio();
-
-  final _baseUrl = 'https://reqres.in/api';
+  // final _baseUrl = 'http://23.23.68.11/quiz_app/admin/public/api/refferal-code';
 
   // TODO: Add methods
-}
-    var res = await http.get(
-      Uri.parse(
-        "http://23.23.68.11/quiz_app/admin/public/api/refferal-code",
-      ),
-      headers: {
-        'Authorization': 'Bearer $token',
-      },
-    );
-    x = CatFactResponse.fromJson(jsonDecode(res.body));
+
+  //
+  Future<CatFactResponse> getUser() async {
+    final Dio _dio = Dio();
+    // Perform GET request to the endpoint "/users/<id>"
+    Response response = await _dio
+        .get("http://23.23.68.11/quiz_app/admin/public/api/refferal-code");
+
+    // Prints the raw data returned by the server
+    print('User Info: ${response.data}');
+
+    // Parsing the raw JSON data to the User class
+    CatFactResponse referralCodeData = CatFactResponse.fromJson(response.data);
+
+    return referralCodeData;
+
+    x = CatFactResponse.fromJson(jsonDecode(response.data));
     setState(() {});
     print(x!.data);
   }
@@ -46,7 +48,7 @@ class DioClient {
       body: Container(
         alignment: Alignment.center,
         child: ElevatedButton(
-          onPressed: getdata,
+          onPressed: getUser,
           child: Text(
             x == null ? "Aman" : x!.data,
           ),
