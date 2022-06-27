@@ -11,7 +11,7 @@ class AppBarWithPicture extends StatelessWidget {
       decoration: const BoxDecoration(
         image: DecorationImage(
           image: AssetImage(
-            "assets/top_header@3x.png",
+            "assets/Rectangle 73@2x.png",
           ),
           fit: BoxFit.fill,
         ),

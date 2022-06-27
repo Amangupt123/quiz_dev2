@@ -42,7 +42,7 @@ class _quiz_serveyState extends State<quiz_servey> {
                 //
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage("assets/top_header@3x.png"),
+                    image: AssetImage("assets/Rectangle 73@2x.png"),
                     fit: BoxFit.fitWidth,
                   ),
                 ),

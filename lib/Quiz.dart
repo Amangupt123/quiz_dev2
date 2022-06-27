@@ -1,18 +1,22 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, non_constant_identifier_names
 
 import 'dart:developer';
-import 'dart:ui';
+//import 'dart:ui';
 
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
+//import 'package:flutter/src/foundation/key.dart';
 //import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_svg/flutter_svg.dart';
 import 'package:quiz_dev2/quiz_servery.dart';
 import 'package:quiz_dev2/TileBid.dart';
 
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:quiz_dev2/quizemodel.dart' as quizemodel;
+
+import 'package:quiz_dev2/token.dart';
 
 import 'appbarwithpicture.dart';
 
@@ -35,7 +39,63 @@ class QuizScree extends StatefulWidget {
   State<QuizScree> createState() => _QuizScreeState();
 }
 
-class _QuizScreeState extends State<QuizScree> {
+class _QuizScreeState extends State<QuizScree>
+    with SingleTickerProviderStateMixin {
+  quizemodel.Quizee? x;
+  Future<void> getUser() async {
+    Dio dio = Dio();
+    // Perform GET request to the endpoint "/users/<id>"
+    var response = await dio.get(
+        "http://23.23.68.11/quiz_app/admin/public/api/get-question",
+        options: Options(headers: {
+          'Authorization':
+              'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiY2QzNzk1NDQ5OTk5YjU4N2NiN2U1OThmM2ZjNmVhZTBlNWMwMTJjNGU1OWFmNjJjYTllNmE4MmIzNThiY2UzMGZkYzlhYTgxOGU3Y2Y3M2UiLCJpYXQiOjE2NTYzMjk2MzkuMjY0NzksIm5iZiI6MTY1NjMyOTYzOS4yNjQ3OTQsImV4cCI6MTY3MjE0MDgzOS4yNDU2Niwic3ViIjoiNDIiLCJzY29wZXMiOltdfQ.sr1xkHhVAYuIyKrL-rpC3s_jZItKrmt1zw_vxHr5a8ybHyc8gJv9D4jes1bjIaefwHX64Wm7rlZeSzMcRwmAHaKOg7q_Yzj4QHtuNC6LYrUloEx6xgkMHzb4iQZEmpIzNplea-Z4b3Es9IkWyO-CjANMjL8ILxC8moCJL0ScvDqzQ7qqGFEhl3nv6PPe0p050ns5hCFFzTYLK9hXK0x1psv32JKE5_A_5zxKQMEA7GF7a1FOqqxHGyspJCAeH0xLwkmAmLdvUFRxGu3Ff9SYy0hXe88ZiZqd_G97qyTYHvTgoMnjDa-Fg60wIj-0dw4Wq3jzXIoD2fZqQ6Kvz50j5hfok0q1mOuLCNXZRHsQiotSQ02JaKsSYfx0uJMXWB1c_TFDzbeVTdLIq-VH8yehmoO1xPk9x_WTw15LGKXjcpwus1BXYlmNv-orpu7Q56td3HLZOtlfasOzgD6kJwdVAajc2CmtS_FxgQwiyaCoU-B8hIT3cjqt_rOz-vWRgH8NlWnJUjsgHK83WM-emyFtb3XHlUeLdEXeMGE_NhJUzt6z9oqm_H1m6CtZEpMzorllWJ-7ozYXTkg9qzMuZIzNGOdx6J9zOlaMFK_wHCGOBns8X5A-zFcguRs1U6t3uJkg_xuKxefzw2ac8B__cGzvxoaConG7pjsJIMbceOKOWds',
+        }));
+
+    // Prints the raw data returned by the server
+    debugPrint('User Info: ${response.data}');
+
+    // Parsing the raw JSON data to the User class
+
+    quizemodel.Quizee x = quizemodel.Quizee.fromJson(response.data);
+    setState(() {});
+    debugPrint(x.data.questions.image);
+  }
+
+  Future<void> getUserr() async {
+    Dio dio = Dio();
+    // Perform GET request to the endpoint "/users/<id>"
+    var response = await dio.post(
+        "http://23.23.68.11/quiz_app/admin/public/api/correct-answer",
+        options: Options(headers: {
+          'Authorization':
+              'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiY2QzNzk1NDQ5OTk5YjU4N2NiN2U1OThmM2ZjNmVhZTBlNWMwMTJjNGU1OWFmNjJjYTllNmE4MmIzNThiY2UzMGZkYzlhYTgxOGU3Y2Y3M2UiLCJpYXQiOjE2NTYzMjk2MzkuMjY0NzksIm5iZiI6MTY1NjMyOTYzOS4yNjQ3OTQsImV4cCI6MTY3MjE0MDgzOS4yNDU2Niwic3ViIjoiNDIiLCJzY29wZXMiOltdfQ.sr1xkHhVAYuIyKrL-rpC3s_jZItKrmt1zw_vxHr5a8ybHyc8gJv9D4jes1bjIaefwHX64Wm7rlZeSzMcRwmAHaKOg7q_Yzj4QHtuNC6LYrUloEx6xgkMHzb4iQZEmpIzNplea-Z4b3Es9IkWyO-CjANMjL8ILxC8moCJL0ScvDqzQ7qqGFEhl3nv6PPe0p050ns5hCFFzTYLK9hXK0x1psv32JKE5_A_5zxKQMEA7GF7a1FOqqxHGyspJCAeH0xLwkmAmLdvUFRxGu3Ff9SYy0hXe88ZiZqd_G97qyTYHvTgoMnjDa-Fg60wIj-0dw4Wq3jzXIoD2fZqQ6Kvz50j5hfok0q1mOuLCNXZRHsQiotSQ02JaKsSYfx0uJMXWB1c_TFDzbeVTdLIq-VH8yehmoO1xPk9x_WTw15LGKXjcpwus1BXYlmNv-orpu7Q56td3HLZOtlfasOzgD6kJwdVAajc2CmtS_FxgQwiyaCoU-B8hIT3cjqt_rOz-vWRgH8NlWnJUjsgHK83WM-emyFtb3XHlUeLdEXeMGE_NhJUzt6z9oqm_H1m6CtZEpMzorllWJ-7ozYXTkg9qzMuZIzNGOdx6J9zOlaMFK_wHCGOBns8X5A-zFcguRs1U6t3uJkg_xuKxefzw2ac8B__cGzvxoaConG7pjsJIMbceOKOWds',
+        }));
+
+    // Prints the raw data returned by the server
+    debugPrint('User Info: ${response.data}');
+
+    // Parsing the raw JSON data to the User class
+
+    quizemodel.Quizee x = quizemodel.Quizee.fromJson(response.data);
+    setState(() {});
+    debugPrint(x.data.questions.questionId);
+  }
+
+  @override
+  void initState() {
+    //_tabController = TabController(length: 2, vsync: this);
+    super.initState();
+    getUser();
+    getUserr();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    // _tabController?.dispose();
+  }
+
   final List<BarChartModel> data = [
     BarChartModel(
       year: "A",
@@ -390,12 +450,24 @@ class _QuizScreeState extends State<QuizScree> {
                       },
                     );
                   },
-                  child: Text(
-                    "4.  Where is the Taj Mahal located?",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black,
-                        fontSize: 21),
+                  child: Row(
+                    children: [
+                      Text(
+                        "4.",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black,
+                            fontSize: 21),
+                      ),
+                      SizedBox(width: 5),
+                      Text(
+                        x == null ? "" : x!.data.questions.question,
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black,
+                            fontSize: 21),
+                      ),
+                    ],
                   ),
                 ),
                 SizedBox(
@@ -408,8 +480,8 @@ class _QuizScreeState extends State<QuizScree> {
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
-                    child: Image.asset(
-                      'assets/tajmahal3x.png',
+                    child: Image.network(
+                      'https://upload.wikimedia.org/wikipedia/commons/8/80/PM_at_First_Meeting_of_Central_Asia_Summit.jpg',
                       // width: 300,
                     ),
                   ),
@@ -421,13 +493,15 @@ class _QuizScreeState extends State<QuizScree> {
                   onClick: () {
                     buttonList = [
                       true,
+                      false,
+                      false,
                       true,
-                      false,
-                      false,
                     ];
                     setState(() {});
                   },
-                  title: "London,United Kingdom",
+                  title: x == null
+                      ? ""
+                      : x!.data.questions.options.option1.text[0],
 
                   titles: "A",
                   selectedColor: Colors.red,
@@ -444,13 +518,15 @@ class _QuizScreeState extends State<QuizScree> {
                       false,
                       true,
                       false,
-                      false,
+                      true,
                     ];
                     setState(() {});
                   },
-                  title: "Agra,India",
+                  title: x == null
+                      ? ""
+                      : x!.data.questions.options.option2.text[0],
                   titles: "B",
-                  selectedColor: Colors.green,
+                  selectedColor: Colors.red,
                   id: 1,
                   selected: buttonList[1],
                   //title: "London,United Kingdom",
@@ -462,13 +538,15 @@ class _QuizScreeState extends State<QuizScree> {
                   onClick: () {
                     buttonList = [
                       false,
-                      true,
-                      true,
                       false,
+                      true,
+                      true,
                     ];
                     setState(() {});
                   },
-                  title: "Paris,France",
+                  title: x == null
+                      ? ""
+                      : x!.data.questions.options.option3.text[0],
                   titles: "C",
                   selectedColor: Colors.red,
                   id: 1,
@@ -488,15 +566,17 @@ class _QuizScreeState extends State<QuizScree> {
                   onClick: () {
                     buttonList = [
                       false,
-                      true,
+                      false,
                       false,
                       true,
                     ];
                     setState(() {});
                   },
-                  title: "Toronto,Canada",
+                  title: x == null
+                      ? ""
+                      : x!.data.questions.options.option4.text[0],
                   titles: "D",
-                  selectedColor: Colors.red,
+                  selectedColor: Colors.green,
                   id: 1,
                   selected: buttonList[3],
                   //title: "London,United Kingdom",

@@ -33,8 +33,8 @@ class _MyAppState extends State<MyApp> {
         //home: custum());
         //home: verifykyc());
         //home: referral());
-        home: Api());
-    //home: QuizScree());
+        // home: Api());
+        home: QuizScree());
     // home: statistics());
     //home: wallet());
     // home: DashedLine());
