@@ -6,6 +6,7 @@ import 'dart:developer';
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:quiz_dev2/correctanswer.dart';
 //import 'package:flutter/src/foundation/key.dart';
 //import 'package:flutter/src/widgets/framework.dart';
 // import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ import 'package:quiz_dev2/TileBid.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:quiz_dev2/quizemodel.dart' as quizemodel;
 
-import 'package:quiz_dev2/token.dart';
+// import 'package:quiz_dev2/token.dart';
 
 import 'appbarwithpicture.dart';
 
@@ -42,6 +43,7 @@ class QuizScree extends StatefulWidget {
 class _QuizScreeState extends State<QuizScree>
     with SingleTickerProviderStateMixin {
   quizemodel.Quizee? x;
+  Correct? y;
   Future<void> getUser() async {
     Dio dio = Dio();
     // Perform GET request to the endpoint "/users/<id>"
@@ -49,7 +51,7 @@ class _QuizScreeState extends State<QuizScree>
         "http://23.23.68.11/quiz_app/admin/public/api/get-question",
         options: Options(headers: {
           'Authorization':
-              'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiY2QzNzk1NDQ5OTk5YjU4N2NiN2U1OThmM2ZjNmVhZTBlNWMwMTJjNGU1OWFmNjJjYTllNmE4MmIzNThiY2UzMGZkYzlhYTgxOGU3Y2Y3M2UiLCJpYXQiOjE2NTYzMjk2MzkuMjY0NzksIm5iZiI6MTY1NjMyOTYzOS4yNjQ3OTQsImV4cCI6MTY3MjE0MDgzOS4yNDU2Niwic3ViIjoiNDIiLCJzY29wZXMiOltdfQ.sr1xkHhVAYuIyKrL-rpC3s_jZItKrmt1zw_vxHr5a8ybHyc8gJv9D4jes1bjIaefwHX64Wm7rlZeSzMcRwmAHaKOg7q_Yzj4QHtuNC6LYrUloEx6xgkMHzb4iQZEmpIzNplea-Z4b3Es9IkWyO-CjANMjL8ILxC8moCJL0ScvDqzQ7qqGFEhl3nv6PPe0p050ns5hCFFzTYLK9hXK0x1psv32JKE5_A_5zxKQMEA7GF7a1FOqqxHGyspJCAeH0xLwkmAmLdvUFRxGu3Ff9SYy0hXe88ZiZqd_G97qyTYHvTgoMnjDa-Fg60wIj-0dw4Wq3jzXIoD2fZqQ6Kvz50j5hfok0q1mOuLCNXZRHsQiotSQ02JaKsSYfx0uJMXWB1c_TFDzbeVTdLIq-VH8yehmoO1xPk9x_WTw15LGKXjcpwus1BXYlmNv-orpu7Q56td3HLZOtlfasOzgD6kJwdVAajc2CmtS_FxgQwiyaCoU-B8hIT3cjqt_rOz-vWRgH8NlWnJUjsgHK83WM-emyFtb3XHlUeLdEXeMGE_NhJUzt6z9oqm_H1m6CtZEpMzorllWJ-7ozYXTkg9qzMuZIzNGOdx6J9zOlaMFK_wHCGOBns8X5A-zFcguRs1U6t3uJkg_xuKxefzw2ac8B__cGzvxoaConG7pjsJIMbceOKOWds',
+              'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiNjdhMGQzMTYxZmE3YjViMmRjMGVkOWEwOTNiY2VkMjNmMjhhMmI1YzU2ZmI5NzY2NTgyZGU3YTNlYjEzMDA1OWZjODQ4NjlkNGM3YmVkNzYiLCJpYXQiOjE2NTYzOTQzNjcuMzE4ODk2LCJuYmYiOjE2NTYzOTQzNjcuMzE4OSwiZXhwIjoxNjcyMjA1NTY3LjMxMSwic3ViIjoiNDIiLCJzY29wZXMiOltdfQ.O2bI_klM-yNlzIY-J8BLY4CVK_Z8AKDQ5ca1bJNU9hSpjWogSouHYrdrzmvruuCDAXUgFXCPT72fB-TNobuAZnIT5-_Jya4xRaPAhHIIL-o2AK7fo5el6xIc1Y-aTQ_XmzIKmEDrNoSxakgLCAY__ikfQImJCYQsR47LQpHaGIyYX941Ld49ldei80Rn9iSvu4s5SNnOO57LyH4a1es_kfYoBjYYfPk4IZVHe9gDntNLlsUiSBHZUt1vYV8fEV2WfgVrvAVjnzTxsAYE5m96xY9LLaKrCfiQpN9M5FSR2FywkwGRPTSjbfdW8m_Hnw-1ui8DmN4fIu7wgpipE-VqQh9CLKrT96nvWUkVFDmLjK9XiT45jGmNXr9vfaWQFdDEmL5_gi_19CBF8gzya5Wm-hy2z46_r_s_AzbovbJB4YnP9ezrcRwvFtLEZlOB8sOvVEQxP9cEQvKIMRdka-DJODX_7s-bMzYuBdi5hZWkNEorXW0yJyAefSGMZmVhKfVuYPLP-w3EQxdGA52mVcjx6vuehA0O7A0jXZh-1jQt_dy_rVRzhek7Qg3tg5H1VAVDxhwb8c9YFuT6_ydjHkOA8HcRYjldF6NScYBtIXlPb4ZbD2ozWBLCFjFR-K5wHkfaVxC9DoJ_1D0ySFaGpqT-hu2kBrrzBiAsJsnR0E_qCSE',
         }));
 
     // Prints the raw data returned by the server
@@ -57,16 +59,18 @@ class _QuizScreeState extends State<QuizScree>
 
     // Parsing the raw JSON data to the User class
 
-    quizemodel.Quizee x = quizemodel.Quizee.fromJson(response.data);
+    x = quizemodel.Quizee.fromJson(response.data);
     setState(() {});
-    debugPrint(x.data.questions.image);
+    debugPrint(x!.data.questions.question);
   }
 
-  Future<void> getUserr() async {
+  Future<void> getUserr(ansId, quesId) async {
     Dio dio = Dio();
+    var formData = {"question_id": quesId, "answer_id": ansId};
     // Perform GET request to the endpoint "/users/<id>"
     var response = await dio.post(
         "http://23.23.68.11/quiz_app/admin/public/api/correct-answer",
+        data: formData,
         options: Options(headers: {
           'Authorization':
               'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiY2QzNzk1NDQ5OTk5YjU4N2NiN2U1OThmM2ZjNmVhZTBlNWMwMTJjNGU1OWFmNjJjYTllNmE4MmIzNThiY2UzMGZkYzlhYTgxOGU3Y2Y3M2UiLCJpYXQiOjE2NTYzMjk2MzkuMjY0NzksIm5iZiI6MTY1NjMyOTYzOS4yNjQ3OTQsImV4cCI6MTY3MjE0MDgzOS4yNDU2Niwic3ViIjoiNDIiLCJzY29wZXMiOltdfQ.sr1xkHhVAYuIyKrL-rpC3s_jZItKrmt1zw_vxHr5a8ybHyc8gJv9D4jes1bjIaefwHX64Wm7rlZeSzMcRwmAHaKOg7q_Yzj4QHtuNC6LYrUloEx6xgkMHzb4iQZEmpIzNplea-Z4b3Es9IkWyO-CjANMjL8ILxC8moCJL0ScvDqzQ7qqGFEhl3nv6PPe0p050ns5hCFFzTYLK9hXK0x1psv32JKE5_A_5zxKQMEA7GF7a1FOqqxHGyspJCAeH0xLwkmAmLdvUFRxGu3Ff9SYy0hXe88ZiZqd_G97qyTYHvTgoMnjDa-Fg60wIj-0dw4Wq3jzXIoD2fZqQ6Kvz50j5hfok0q1mOuLCNXZRHsQiotSQ02JaKsSYfx0uJMXWB1c_TFDzbeVTdLIq-VH8yehmoO1xPk9x_WTw15LGKXjcpwus1BXYlmNv-orpu7Q56td3HLZOtlfasOzgD6kJwdVAajc2CmtS_FxgQwiyaCoU-B8hIT3cjqt_rOz-vWRgH8NlWnJUjsgHK83WM-emyFtb3XHlUeLdEXeMGE_NhJUzt6z9oqm_H1m6CtZEpMzorllWJ-7ozYXTkg9qzMuZIzNGOdx6J9zOlaMFK_wHCGOBns8X5A-zFcguRs1U6t3uJkg_xuKxefzw2ac8B__cGzvxoaConG7pjsJIMbceOKOWds',
@@ -77,9 +81,9 @@ class _QuizScreeState extends State<QuizScree>
 
     // Parsing the raw JSON data to the User class
 
-    quizemodel.Quizee x = quizemodel.Quizee.fromJson(response.data);
+    y = Correct.fromJson(response.data);
     setState(() {});
-    debugPrint(x.data.questions.questionId);
+    debugPrint(y!.data);
   }
 
   @override
@@ -87,7 +91,7 @@ class _QuizScreeState extends State<QuizScree>
     //_tabController = TabController(length: 2, vsync: this);
     super.initState();
     getUser();
-    getUserr();
+    getUserr(3, 7);
   }
 
   @override
@@ -498,6 +502,8 @@ class _QuizScreeState extends State<QuizScree>
                       true,
                     ];
                     setState(() {});
+                    var id = x!.data.questions.options.option1.id.toString();
+                    getUserr(id, x!.data.questions.questionId);
                   },
                   title: x == null
                       ? ""
@@ -521,6 +527,9 @@ class _QuizScreeState extends State<QuizScree>
                       true,
                     ];
                     setState(() {});
+
+                    var id = x!.data.questions.options.option2.id.toString();
+                    getUserr(id, x!.data.questions.questionId);
                   },
                   title: x == null
                       ? ""
@@ -543,6 +552,8 @@ class _QuizScreeState extends State<QuizScree>
                       true,
                     ];
                     setState(() {});
+                    var id = x!.data.questions.options.option3.id.toString();
+                    getUserr(id, x!.data.questions.questionId);
                   },
                   title: x == null
                       ? ""
@@ -571,6 +582,8 @@ class _QuizScreeState extends State<QuizScree>
                       true,
                     ];
                     setState(() {});
+                    var id = x!.data.questions.options.option4.id.toString();
+                    getUserr(id, x!.data.questions.questionId);
                   },
                   title: x == null
                       ? ""

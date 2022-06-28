@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:quiz_dev2/myprofile.dart';
 import 'package:quiz_dev2/wallet.dart';
 
 import 'appbarwithpicture.dart';
@@ -25,9 +26,19 @@ class _statisticsState extends State<statistics> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const Text("Statistics"),
-              Image.asset(
-                "assets/trophi.png",
-                scale: 3,
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => myprofile(),
+                    ),
+                  );
+                },
+                child: Image.asset(
+                  "assets/trophi.png",
+                  scale: 3,
+                ),
               )
             ],
           ),

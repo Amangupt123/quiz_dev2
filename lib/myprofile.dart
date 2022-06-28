@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/widgets.dart';
+import 'package:quiz_dev2/verifykyc.dart';
 
 import 'appbarwithpicture.dart';
 
@@ -33,9 +34,15 @@ class _myprofileState extends State<myprofile> {
               onTap: () {
                 log("Button pressed");
               },
-              child: Image.asset(
-                'assets/drawer.png',
-                fit: BoxFit.contain,
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Verifykyc()));
+                },
+                child: Image.asset(
+                  'assets/drawer.png',
+                  fit: BoxFit.contain,
+                ),
               ),
             ),
           ),

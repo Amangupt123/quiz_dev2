@@ -2,17 +2,18 @@
 
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:quiz_dev2/wallet.dart';
 
 import 'appbarwithpicture.dart';
 
-class verifykyc extends StatefulWidget {
-  const verifykyc({Key? key}) : super(key: key);
+class Verifykyc extends StatefulWidget {
+  const Verifykyc({Key? key}) : super(key: key);
 
   @override
-  State<verifykyc> createState() => _verifykycState();
+  State<Verifykyc> createState() => _VerifykycState();
 }
 
-class _verifykycState extends State<verifykyc> {
+class _VerifykycState extends State<Verifykyc> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -20,7 +21,16 @@ class _verifykycState extends State<verifykyc> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           leadingWidth: 45,
-          title: const Text("Verify you KYC"),
+          title: InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Kitty(),
+                  ),
+                );
+              },
+              child: const Text("Verify you KYC")),
           toolbarHeight: 100,
           automaticallyImplyLeading: false,
           leading: Padding(
