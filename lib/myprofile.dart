@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/widgets.dart';
+import 'package:quiz_dev2/changed_password.dart';
 import 'package:quiz_dev2/verifykyc.dart';
 
 import 'appbarwithpicture.dart';
@@ -24,7 +25,12 @@ class _myprofileState extends State<myprofile> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           leadingWidth: 45,
-          title: const Text("My Profile"),
+          title: InkWell(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Verifykyc()));
+              },
+              child: const Text("My Profile")),
           toolbarHeight: 100,
           // backgroundColor: Color(0xffF8922D),
           //leadingWidth: 42,
@@ -36,8 +42,7 @@ class _myprofileState extends State<myprofile> {
               },
               child: InkWell(
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Verifykyc()));
+                  Navigator.pop(context);
                 },
                 child: Image.asset(
                   'assets/drawer.png',
@@ -74,15 +79,30 @@ class _myprofileState extends State<myprofile> {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: <Widget>[
                           Container(
+                            // ignore: sort_child_properties_last
                             child: index == 0
                                 ? Image.asset(
                                     "assets/gudda.png",
                                     scale: 2.8,
                                   )
-                                : Image.asset(
-                                    "assets/gudda2.png",
-                                    scale: 2.8,
+
+                                // onTap: (() => Navigator.push(
+                                //     context,
+                                //     MaterialPageRoute(
+                                //         builder: (context) =>
+                                //             PasswordScreen()))),
+                                : InkWell(
+                                    onTap: (() => Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                PasswordScreen()))),
+                                    child: Image.asset(
+                                      "assets/gudda2.png",
+                                      scale: 2.8,
+                                    ),
                                   ),
+
                             height: 55,
                             decoration: const BoxDecoration(
                               borderRadius: BorderRadius.only(
@@ -101,6 +121,12 @@ class _myprofileState extends State<myprofile> {
                                 // ),
                                 Padding(
                                   padding: const EdgeInsets.all(12.0),
+
+                                  // onTap: (() => Navigator.push(
+                                  //     context,
+                                  //     MaterialPageRoute(
+                                  //         builder: (context) =>
+                                  //             PasswordScreen()))),
                                   child: Text(
                                       index == 0
                                           ? "Edit Profile"

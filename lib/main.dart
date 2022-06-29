@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_dev2/api.dart';
 import 'package:quiz_dev2/appbarwithpicture.dart';
+import 'package:quiz_dev2/changed_password.dart';
 import 'package:quiz_dev2/custum.dart';
 import 'package:quiz_dev2/pics.dart';
 import 'package:quiz_dev2/quiz_servery.dart';
@@ -30,6 +31,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        // home: PasswordScreen());
         //home: custum());
         //home: verifykyc());
         //home: referral());

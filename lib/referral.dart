@@ -7,6 +7,7 @@ import 'package:dio/dio.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/route_manager.dart';
 import 'package:quiz_dev2/appbarwithpicture.dart';
 //import 'package:quizapp/views/user_score/token.dart';
 //import 'package:quiz_dev2/verifykyc.dart';
@@ -78,10 +79,15 @@ class _referralState extends State<referral>
           // backgroundColor: Color(0xffF8922D),
           //leadingWidth: 42,
 
-          leading: Image.asset(
-            'assets/drawer.png',
-            scale: 1.0,
-            // fit: BoxFit.contain,
+          leading: InkWell(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Image.asset(
+              'assets/drawer.png',
+              scale: 2.8,
+              // fit: BoxFit.contain,
+            ),
           ),
 
           flexibleSpace: const AppBarWithPicture(),
@@ -121,7 +127,7 @@ class _referralState extends State<referral>
                 ),
                 const SizedBox(height: 20),
                 Image.asset(
-                  "assets/play.png",
+                  "assets/man.png",
                   scale: 2.8,
                 ),
                 const SizedBox(height: 20),
@@ -159,8 +165,8 @@ class _referralState extends State<referral>
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Image.asset(
-                          "assets/play.png",
-                          scale: 3.2,
+                          "assets/share.png",
+                          scale: 2.8,
                         ),
                       ),
                     ],
@@ -233,7 +239,7 @@ class _referralState extends State<referral>
                                     padding: const EdgeInsets.only(
                                         right: 16.0, bottom: 10),
                                     child: Image.asset(
-                                      "assets/play.png",
+                                      "assets/copy1.png",
                                       scale: 2.8,
                                     ),
                                   ),
